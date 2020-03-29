@@ -56,11 +56,21 @@ function onPlayerBallKickHandler ( player ) {
 	}
 	else {
 	 	room.sendAnnouncement( "[2] " + player.name + " kick the ball." );
-  	playersThatTouchedTheBall.unshift( player.id );
+  		playersThatTouchedTheBall.unshift( player.id );
   }
 }
 
+function onPositionsResetHandler () {
+	playersThatTouchedTheBall = [];
+}
+
+function onGameStopHandler () {
+	playersThatTouchedTheBall = [];
+}
+
 room.onRoomLink = function onRoomLink () {
-  room.onPlayerBallKick = onPlayerBallKickHandler;
-  room.onGameTick = onGameTickHandler;
+	room.onPlayerBallKick = onPlayerBallKickHandler;
+	room.onGameTick = onGameTickHandler;
+	room.onPositionsReset = onPositionsResetHandler;
+	room.onGameStop = onGameStopHandler;
 }

@@ -1,0 +1,11 @@
+{
+  "name": "rubebeben/hhm-plugins",
+  "description": "ruben's HHM plugins.",
+  "author": "ruben",
+  "config": {
+    "path": "src"
+  },
+  "plugins": [
+    "rub/test",
+  ]
+}

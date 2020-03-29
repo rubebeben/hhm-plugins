@@ -7,7 +7,7 @@ room.pluginSpec = {
 };
 
 function onPlayerJoinHandler ( player ) {
-	room.kickPlayer( player.id, "testing 2", false);
+	room.sendAnnouncement( "[2] " + player.name + msg );
 }
 
 room.onPlayerJoin = onPlayerJoinHandler;

@@ -10,4 +10,6 @@ function onPlayerJoinHandler ( player ) {
 	room.sendAnnouncement( "[2] " + player.name + msg );
 }
 
-room.onPlayerJoin = onPlayerJoinHandler;
+room.onRoomLink = function onRoomLink() {
+  room.onPlayerJoin = onPlayerJoinHandler;
+}

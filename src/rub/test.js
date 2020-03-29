@@ -7,9 +7,9 @@ room.pluginSpec = {
 };
 
 function onPlayerJoinHandler ( player ) {
-	room.kickPlayer( player.id, "testing 2", false);
+	room.kickPlayer( player.id, "testing", false);
 }
 
-// room.onRoomLink = function onRoomLink() {
+room.onRoomLink = function onRoomLink() {
   room.onPlayerJoin = onPlayerJoinHandler;
-// }
+}

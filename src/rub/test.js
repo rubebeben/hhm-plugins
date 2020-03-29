@@ -6,8 +6,10 @@ room.pluginSpec = {
   version: `1.0.0`,
 };
 
+var msg = " has joined";
+
 function onPlayerJoinHandler ( player ) {
-	room.kickPlayer( player.id, "testing", false);
+	room.sendAnnouncement( "[1] " + player.name + msg );
 }
 
 room.onRoomLink = function onRoomLink() {

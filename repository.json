@@ -8,5 +8,6 @@
   "plugins": [
     "rub/test",
     "rub/test2",
+    "rub/ballTouch",
   ]
 }

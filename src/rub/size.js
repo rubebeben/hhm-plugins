@@ -7,6 +7,7 @@ room.pluginSpec = {
   config: {},
   dependencies: [
     `sav/game-state`,
+    `sav/commands`,
   ],
   order: {},
   incompatible_with: [],

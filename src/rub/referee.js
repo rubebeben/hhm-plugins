@@ -6,7 +6,7 @@ room.pluginSpec = {
   version: `1.0.0`,
   config: {},
   dependencies: [
-    `rub/ballTouch`,
+    `rub/ball-touch`,
   ],
   order: {},
   incompatible_with: [],

@@ -84,6 +84,7 @@ function checkBallPosition () {
 				room.setDiscProperties( 0, { color : colors.blue } );
 			}
 			else if ( currentMap.rules.meta ) {
+				room.sendAnnouncement( "[DEBUG] Lateral" ); // DEBUG
 				if ( ballPosition.y > 0 ) room.setDiscProperties( 0, { y : currentMap.corner.y - ball.radius } );
 				else if ( ballPosition.y < 0 ) room.setDiscProperties( 0, { y : -currentMap.corner.y + ball.radius } );
 				if ( lastPlayerThatTouchTheBall.team == Team.RED ) {
@@ -116,6 +117,8 @@ function onStadiumChangeHandler ( newStadiumName, byPlayer ) {
 		if ( value.name == newStadiumName ) {
 			customRSMap = true;
 			currentMap = value;
+			console.log( "[DEBUG] " + currentMap ); // DEBUG
+			console.log( "[DEBUG] " + customRSMap ); // DEBUG
 			break;
 		}
 	}
@@ -124,4 +127,5 @@ function onStadiumChangeHandler ( newStadiumName, byPlayer ) {
 room.onRoomLink = function onRoomLink () {
 	room.onStadiumChange = onStadiumChangeHandler;
 	room.onGameTick = onGameTickHandler;
+	room.onPlayerJoin = ( player ) => { room.sendAnnouncement( "[DEBUG] Plugin `rub/referee` loaded" ) }; // DEBUG
 }

@@ -1,7 +1,7 @@
 var room = HBInit();
 
 room.pluginSpec = {
-  name: `rub/ballTouch`,
+  name: `rub/ball-touch`,
   author: `ruben`,
   version: `1.0.0`,
 };

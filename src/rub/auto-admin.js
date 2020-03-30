@@ -2,7 +2,7 @@
 var room = HBInit();
 
 room.pluginSpec = {
-  name: `rub/autoAdmin`,
+  name: `rub/auto-admin`,
   author: `ruben`,
   version: `1.0.0`,
 };

@@ -9,3 +9,5 @@ room.pluginSpec = {
 function displayMessage ( message ) {
   room.sendAnnouncement( message );
 }
+
+room.displayMessage = displayMessage;

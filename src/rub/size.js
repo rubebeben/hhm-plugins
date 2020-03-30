@@ -4,7 +4,10 @@ room.pluginSpec = {
   name: `rub/size`,
   author: `ruben`,
   version: `1.0.0`,
-  config: {},
+  config: {
+    maxSize : 17,
+    minSize : 12,
+  },
   dependencies: [
     `sav/game-state`,
     `sav/commands`,
@@ -13,17 +16,18 @@ room.pluginSpec = {
   incompatible_with: [],
 };
 
+const config = room.getConfig();
+let playersDiscProperties = {};
+
 let help = room.getPlugin(`sav/help`);
 if (help) {
   help.registerHelp( `size`, ` SIZE_NUMBER`, { numArgs: 1 } );
 }
 
-var playersDiscProperties = {};
-
 room.onCommand1_size = function ( player, arguments, argumentString ) {
   let argument = parseInt( arguments[0] );
   if ( isNaN( argument ) ) return;
-  else if ( argument < 12 || argument > 17 ) return;
+  else if ( argument < config.minSize || argument > config.maxSize ) return;
   else {
     playersDiscProperties[player.id].radius = argument;
     let state = room.getPlugin(`sav/game-state`);

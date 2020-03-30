@@ -1,3 +1,4 @@
+var room = HBInit();
 
 room.pluginSpec = {
   name: `rub/size`,

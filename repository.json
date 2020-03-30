@@ -6,8 +6,8 @@
     "path": "src"
   },
   "plugins": [
-    "rub/ballTouch",
-    "rub/autoAdmin",
+    "rub/ball-touch",
+    "rub/auto-admin",
     "rub/referee",
   ]
 }

@@ -68,9 +68,14 @@ function onGameStopHandler () {
 	playersThatTouchedTheBall = [];
 }
 
+function getLastPlayersWhoTouchedTheBall () {
+	return playersThatTouchedTheBall;
+}
+
 room.onRoomLink = function onRoomLink () {
 	room.onPlayerBallKick = onPlayerBallKickHandler;
 	room.onGameTick = onGameTickHandler;
 	room.onPositionsReset = onPositionsResetHandler;
 	room.onGameStop = onGameStopHandler;
+	room.getLastPlayersWhoTouchedTheBall = getLastPlayersWhoTouchedTheBall;
 }

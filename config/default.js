@@ -89,6 +89,7 @@ HHM.config.plugins = {
   'hr/kickban': {},
   'rub/ball-touch': {},
   'rub/referee': {},
+	'rub/size': {},
 };
 
 /**
@@ -140,7 +141,7 @@ HHM.config.repositories = [
   {
     type: `github`,
     repository: `rubebeben/hhm-plugins`,
-	version: `master`,
+	version: `test10`,
   },
 ];
 

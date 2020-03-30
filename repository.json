@@ -11,5 +11,6 @@
     "rub/ballTouch",
     "rub/autoAdmin",
     "rub/displayMessage",
+    "rub/welcome",
   ]
 }

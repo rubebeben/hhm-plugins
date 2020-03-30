@@ -58,7 +58,7 @@ function checkBallPosition () {
 			isBallOutsideStadium = true;
 			if ( ballPosition.y < currentMap.goalLine.y && ballPosition.y > -currentMap.goalLine.y ) return;
 			room.setDiscProperties( 0, { xspeed : 0, yspeed : 0 } );
-			var lastPlayerThatTouchTheBall = room.getPlugin(`rub/ballTouch`).getLastPlayersWhoTouchedTheBall()[0];
+			var lastPlayerThatTouchTheBall = room.getPlayer( room.getPlugin( `rub/ballTouch` ).getLastPlayersWhoTouchedTheBall()[0] );
 			if ( currentMap.rules.goalKick && ballPosition.x > currentMap.width && lastPlayerThatTouchTheBall.team == Team.RED ) {
 				if ( ballPosition.y > currentMap.goalLine.y ) room.setDiscProperties( 0, { x : currentMap.goalKick.x + ball.radius, y : currentMap.goalKick.y } );
 				else if ( ballPosition.y < -currentMap.goalLine.y ) room.setDiscProperties( 0, { x : currentMap.goalKick.x + ball.radius, y : -currentMap.goalKick.y } );
@@ -84,7 +84,7 @@ function checkBallPosition () {
 				room.setDiscProperties( 0, { color : colors.blue } );
 			}
 			else if ( currentMap.rules.meta ) {
-				room.sendAnnouncement( "[DEBUG] Lateral" ); // DEBUG
+				// room.sendAnnouncement( "[DEBUG] Lateral" ); // DEBUG
 				if ( ballPosition.y > 0 ) room.setDiscProperties( 0, { y : currentMap.corner.y - ball.radius } );
 				else if ( ballPosition.y < 0 ) room.setDiscProperties( 0, { y : -currentMap.corner.y + ball.radius } );
 				if ( lastPlayerThatTouchTheBall.team == Team.RED ) {
@@ -117,8 +117,8 @@ function onStadiumChangeHandler ( newStadiumName, byPlayer ) {
 		if ( value.name == newStadiumName ) {
 			customRSMap = true;
 			currentMap = value;
-			console.log( "[DEBUG] " + currentMap ); // DEBUG
-			console.log( "[DEBUG] " + customRSMap ); // DEBUG
+			// console.log( "[DEBUG] " + currentMap ); // DEBUG
+			// console.log( "[DEBUG] " + customRSMap ); // DEBUG
 			break;
 		}
 	}
@@ -127,5 +127,5 @@ function onStadiumChangeHandler ( newStadiumName, byPlayer ) {
 room.onRoomLink = function onRoomLink () {
 	room.onStadiumChange = onStadiumChangeHandler;
 	room.onGameTick = onGameTickHandler;
-	room.onPlayerJoin = ( player ) => { room.sendAnnouncement( "[DEBUG] Plugin `rub/referee` loaded" ) }; // DEBUG
+	// room.onPlayerJoin = ( player ) => { room.sendAnnouncement( "[DEBUG] Plugin `rub/referee` loaded" ) }; // DEBUG
 }

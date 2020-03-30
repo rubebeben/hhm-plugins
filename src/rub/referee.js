@@ -14,11 +14,11 @@ room.pluginSpec = {
 
 const fun_x = { x : Math.cos( Math.PI / 4 ), y : Math.sin( Math.PI / 4 ) };
 const inv_fun_x = { x : Math.cos( Math.PI / 4 * 3), y : Math.sin( Math.PI / 4 * 3) };
-var isBallOutsideStadium = false;
-var customRSMap;
-var currentMap;
+let isBallOutsideStadium = false;
+let customRSMap;
+let currentMap;
 
-var colors = {
+const colors = {
   defred : 0xe56e56,
   defblue : 0x5689e5,
   red : 0xff0000,
@@ -26,13 +26,13 @@ var colors = {
   white : 0xffffff
 };
 
-var Team = {
+const Team = {
 	SPECTATORS: 0,
 	RED: 1,
 	BLUE: 2
 };
 
-var rs_maps = {
+let rs_maps = {
 	rs_1 : {
 		name : "RSHL Real Soccer",
 		height : 600,
@@ -68,19 +68,19 @@ function checkBallPosition () {
 			else if ( currentMap.rules.goalKick && ballPosition.x < -currentMap.width && lastPlayerThatTouchTheBall.team == Team.BLUE ) {
 				if ( ballPosition.y > currentMap.goalLine.y ) room.setDiscProperties( 0, { x : -currentMap.goalKick.x - ball.radius, y : currentMap.goalKick.y } );
 				else if ( ballPosition.y < -currentMap.goalLine.y ) room.setDiscProperties( 0, { x : -currentMap.goalKick.x - ball.radius, y : -currentMap.goalKick.y } );
-				room.sendAnnouncement("[⚽] 𝐒𝐚𝐪𝐮𝐞 𝐝𝐞 𝐚𝐫𝐜𝐨", null, colors.defred, "bold", 1);
+				room.sendAnnouncement(`𝐒𝐚𝐪𝐮𝐞 𝐝𝐞 𝐚𝐫𝐜𝐨`, undefined, { prefix: `⚽`, color : colors.defred, style : "bold", sound : 1 });
 				room.setDiscProperties( 0, { color : colors.red } );
 			}
 			else if ( currentMap.rules.corner && ballPosition.x > currentMap.width && lastPlayerThatTouchTheBall.team == Team.BLUE ) {
 				if ( ballPosition.y > currentMap.goalLine.y ) room.setDiscProperties( 0, { x : inv_fun_x.x * ball.radius + currentMap.corner.x, y : inv_fun_x.y * ball.radius + currentMap.corner.y} );
 				else if ( ballPosition.y < -currentMap.goalLine.y ) room.setDiscProperties( 0, { x : -fun_x.x * ball.radius + currentMap.corner.x, y : -fun_x.y * ball.radius - currentMap.corner.y} );
-				room.sendAnnouncement("[🚩] 𝐂𝐨𝐫𝐧𝐞𝐫", null, colors.defred, "bold", 1);
+				room.sendAnnouncement(`𝐂𝐨𝐫𝐧𝐞𝐫`, undefined, { prefix: `🚩`, color : colors.defred, style : "bold", sound : 1 });
 				room.setDiscProperties( 0, { color : colors.red } );
 			}
 			else if ( currentMap.rules.corner && ballPosition.x < -currentMap.width && lastPlayerThatTouchTheBall.team == Team.RED ) {
 				if ( ballPosition.y > currentMap.goalLine.y ) room.setDiscProperties( 0, { x : fun_x.x * ball.radius - currentMap.corner.x, y : fun_x.y * ball.radius + currentMap.corner.y} );
 				else if ( ballPosition.y < -currentMap.goalLine.y ) room.setDiscProperties( 0, { x : -inv_fun_x.x * ball.radius - currentMap.corner.x, y : -inv_fun_x.y * ball.radius - currentMap.corner.y} );
-				room.sendAnnouncement("[🚩] 𝐂𝐨𝐫𝐧𝐞𝐫", null, colors.defblue, "bold", 1);
+				room.sendAnnouncement(`𝐂𝐨𝐫𝐧𝐞𝐫`, undefined, { prefix: `🚩`, color : colors.defblue, style : "bold", sound : 1 });
 				room.setDiscProperties( 0, { color : colors.blue } );
 			}
 			else if ( currentMap.rules.meta ) {
@@ -88,11 +88,11 @@ function checkBallPosition () {
 				if ( ballPosition.y > 0 ) room.setDiscProperties( 0, { y : currentMap.corner.y - ball.radius } );
 				else if ( ballPosition.y < 0 ) room.setDiscProperties( 0, { y : -currentMap.corner.y + ball.radius } );
 				if ( lastPlayerThatTouchTheBall.team == Team.RED ) {
-					room.sendAnnouncement("[𝐁] 𝐋𝐚𝐭𝐞𝐫𝐚𝐥 𝐝𝐞𝐥 𝐁𝐥𝐮𝐞 🔵", null, colors.defblue, "bold", 1);
+					room.sendAnnouncement(`𝐋𝐚𝐭𝐞𝐫𝐚𝐥 𝐝𝐞𝐥 𝐁𝐥𝐮𝐞 🔵`, undefined, { prefix: `𝐁`, color : colors.defblue, style : "bold", sound : 1 });
 					room.setDiscProperties( 0, { color : colors.blue } );
 				}
 				else if ( lastPlayerThatTouchTheBall.team == Team.BLUE ) {
-					room.sendAnnouncement("[𝐑] 𝐋𝐚𝐭𝐞𝐫𝐚𝐥 𝐝𝐞𝐥 𝐑𝐞𝐝 🔴", null, colors.defred, "bold", 1);
+					room.sendAnnouncement(`𝐋𝐚𝐭𝐞𝐫𝐚𝐥 𝐝𝐞𝐥 𝐑𝐞𝐝 🔴`, undefined, { prefix: `𝐑`, color : colors.defred, style : "bold", sound : 1 });
 					room.setDiscProperties( 0, { color : colors.red } );
 				}
 			}

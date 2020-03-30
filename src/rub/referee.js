@@ -27,7 +27,6 @@ var rs_maps = {
 		corner : { x : 1214, y : 635 },
 		goalKick : { x : 1190, y : 205 },
     goalLine : { x : 1160, y : 124 },
-    stadium : rs_1_stadium
   }
 };
 

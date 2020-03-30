@@ -26,6 +26,12 @@ var colors = {
   white : 0xffffff
 };
 
+var Team = {
+	SPECTATORS: 0,
+	RED: 1,
+	BLUE: 2
+};
+
 var rs_maps = {
 	rs_1 : {
 		name : "RSHL Real Soccer",
@@ -35,7 +41,7 @@ var rs_maps = {
 		corner : { x : 1214, y : 635 },
 		goalKick : { x : 1190, y : 205 },
 		goalLine : { x : 1160, y : 124 },
-  }
+	}
 };
 
 function isOutsideStadium ( ballPosition ) {
@@ -116,6 +122,6 @@ function onStadiumChangeHandler ( newStadiumName, byPlayer ) {
 }
 
 room.onRoomLink = function onRoomLink () {
-  room.onStadiumChange = onStadiumChangeHandler;
-  room.onGameTick = onGameTickHandler;
+	room.onStadiumChange = onStadiumChangeHandler;
+	room.onGameTick = onGameTickHandler;
 }

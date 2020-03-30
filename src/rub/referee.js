@@ -62,7 +62,7 @@ function checkBallPosition () {
 			if ( currentMap.rules.goalKick && ballPosition.x > currentMap.width && lastPlayerThatTouchTheBall.team == Team.RED ) {
 				if ( ballPosition.y > currentMap.goalLine.y ) room.setDiscProperties( 0, { x : currentMap.goalKick.x + ball.radius, y : currentMap.goalKick.y } );
 				else if ( ballPosition.y < -currentMap.goalLine.y ) room.setDiscProperties( 0, { x : currentMap.goalKick.x + ball.radius, y : -currentMap.goalKick.y } );
-				room.sendAnnouncement(`𝐒𝐚𝐪𝐮𝐞 𝐝𝐞 𝐚𝐫𝐜𝐨`, undefined, { prefix: `⚽`, colors.defblue, "bold", 1 });
+				room.sendAnnouncement(`𝐒𝐚𝐪𝐮𝐞 𝐝𝐞 𝐚𝐫𝐜𝐨`, undefined, { prefix: `⚽`, color : colors.defblue, style : "bold", sound : 1 });
 				room.setDiscProperties( 0, { color : colors.blue } );
 			}
 			else if ( currentMap.rules.goalKick && ballPosition.x < -currentMap.width && lastPlayerThatTouchTheBall.team == Team.BLUE ) {

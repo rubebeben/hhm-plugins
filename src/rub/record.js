@@ -41,7 +41,6 @@ room.onCommand0_record = function ( player, arguments, argumentString ) {
 }
 
 function saveRecord ( recordingRaw ) {
-    let doc = room.getPlugin(`rub/doc-divs`).getDoc();
     let tr = doc.createElement('tr');
     tr.style = "width: 100px; padding: 10px 0; clear: both";
     let td = doc.createElement('td');
@@ -72,6 +71,12 @@ function onGameStopHandler () {
 }
 
 room.onRoomLink = function onRoomLink () {
+  let doc = room.getPlugin(`rub/doc-divs`).getDoc();
+  let recstable = doc.createElement('table');
+  recstable.style = "width: 400px; position: relative; padding: 5px 10px; border: 1px solid black;";
+  recstable.innerHTML = `
+  </table>`;
+  form.appendChild(recstable);
   room.onGameStart = onGameStartHandler;
   room.onGameStop = onGameStopHandler;
 }

@@ -6,11 +6,11 @@ room.pluginSpec = {
   version: `1.0.0`,
   config: {
     record : false,
-		// Roles that can use the in room commands.
-		allowedRoles : ['host'],
+    // Roles that can use the in room commands.
+    allowedRoles : ['host'],
   },
   dependencies: [
-		`rub/doc-divs`,
+    `rub/doc-divs`,
     `sav/commands`,
     `sav/roles`,
   ],
@@ -30,18 +30,18 @@ room.onCommand0_record = function ( player, arguments, argumentString ) {
   if ( !roles ) return;
   if ( roles.ensurePlayerRoles( player.id, config.allowedRoles, room ) ) {
     if ( config.record ) {
-			config.record = false;
-			room.sendAnnouncement(`Automatic recording has stopped!`, null, 0xFF0000);
+    config.record = false;
+    room.sendAnnouncement(`Automatic recording has stopped!`, null, 0xFF0000);
     }
     else {
-			config.record = true;
-			room.sendAnnouncement(`Automatic recording has started!`, null, 0x00FF00);
-		}
+    config.record = true;
+    room.sendAnnouncement(`Automatic recording has started!`, null, 0x00FF00);
+    }
   }
 }
 
 function saveRecord ( recordingRaw ) {
-		let doc = room.getPlugin(`rub/doc-divs`).getDoc();
+    let doc = room.getPlugin(`rub/doc-divs`).getDoc();
     let tr = doc.createElement('tr');
     tr.style = "width: 100px; padding: 10px 0; clear: both";
     let td = doc.createElement('td');
@@ -73,5 +73,5 @@ function onGameStopHandler () {
 
 room.onRoomLink = function onRoomLink () {
   room.onGameStart = onGameStartHandler;
-	room.onGameStop = onGameStopHandler;
+  room.onGameStop = onGameStopHandler;
 }

@@ -19,6 +19,12 @@ function getDoc() {
   return doc;
 }
 
+function getForm() {
+  if ( doc == null || doc == undefined ) console.log( "[DEBUG] NULLLLLLLLLLLLLLLL" );
+  else console.log( "[DEBUG] YESSSSSSSS" );
+  return form;
+}
+
 room.onRoomLink = function onRoomLink () {
   doc = document.getElementsByTagName('iframe')[0].contentDocument;
   form = doc.createElement('fieldset');
@@ -27,4 +33,5 @@ room.onRoomLink = function onRoomLink () {
   </fieldset>`;
   doc.body.appendChild(form);
   room.getDoc = getDoc;
+  room.getForm = getForm;
 }

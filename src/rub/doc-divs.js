@@ -11,11 +11,11 @@ room.pluginSpec = {
 };
 
 function getDoc() {
-	return doc;
+  return doc;
 }
 
 room.onRoomLink = function onRoomLink () {
-	let doc = document.getElementsByTagName('iframe')[0].contentDocument;
+  let doc = document.getElementsByTagName('iframe')[0].contentDocument;
   let form = doc.createElement('fieldset');
   form.style = "width: 400px; position: relative; padding: 5px 10px";
   form.innerHTML = `

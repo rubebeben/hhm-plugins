@@ -12,7 +12,7 @@ room.pluginSpec = {
 
 function getDoc() {
   if ( doc == null || doc == undefined ) console.log( "[DEBUG] NULLLLLLLLLLLLLLLL" );
-  else console.dir( doc );
+  else console.log( "[DEBUG] YESSSSSSSS" );
   return doc;
 }
 

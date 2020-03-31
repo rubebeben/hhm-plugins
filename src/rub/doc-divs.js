@@ -10,7 +10,7 @@ room.pluginSpec = {
   incompatible_with: [],
 };
 
-function getDoc () {
+function getDoc() {
 	return doc;
 }
 

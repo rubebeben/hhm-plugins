@@ -10,6 +10,10 @@ room.pluginSpec = {
   incompatible_with: [],
 };
 
+function getDoc () {
+	return doc;
+}
+
 room.onRoomLink = function onRoomLink () {
 	let doc = document.getElementsByTagName('iframe')[0].contentDocument;
   let form = doc.createElement('fieldset');

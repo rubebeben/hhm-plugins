@@ -21,6 +21,7 @@ room.pluginSpec = {
 const config = room.getConfig();
 
 let doc;
+let form;
 let recstable;
 
 let help = room.getPlugin(`sav/help`);
@@ -75,6 +76,7 @@ function onGameStopHandler () {
 
 room.onRoomLink = function onRoomLink () {
   doc = room.getPlugin(`rub/doc-divs`).getDoc();
+  form = room.getPlugin(`rub/doc-divs`).getForm();
   recstable = doc.createElement('table');
   recstable.style = "width: 400px; position: relative; padding: 5px 10px; border: 1px solid black;";
   recstable.innerHTML = `

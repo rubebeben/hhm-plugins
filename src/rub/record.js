@@ -29,11 +29,11 @@ room.onCommand0_record = function ( player, arguments, argumentString ) {
   if ( roles.ensurePlayerRoles( player.id, allowedRoles, room ) ) {
     if ( config.record ) {
 			config.record = false;
-			room.sendAnnouncement(`Recording has stopped!`, null, 0xFF0000);
+			room.sendAnnouncement(`Automatic recording has stopped!`, null, 0xFF0000);
     }
     else {
 			config.record = true;
-			room.sendAnnouncement(`Recording has started!`, null, 0x00FF00);
+			room.sendAnnouncement(`Automatic recording has started!`, null, 0x00FF00);
 		}
   }
 }

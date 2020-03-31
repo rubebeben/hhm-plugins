@@ -6,7 +6,8 @@ room.pluginSpec = {
   version: `1.0.0`,
   config: {
     record : false,
-		allowedRoles : ['host']
+		// Roles that can use the in room commands.
+		allowedRoles : ['host'],
   },
   dependencies: [
 		`rub/doc-divs`,

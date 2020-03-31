@@ -16,6 +16,8 @@ room.pluginSpec = {
   incompatible_with: [],
 };
 
+const config = room.getConfig();
+
 let help = room.getPlugin(`sav/help`);
 if ( help ) {
   help.registerHelp( `password`, `PASSWORD`, { numArgs: 1, roles: config.allowedRoles } );

@@ -6,7 +6,7 @@ room.pluginSpec = {
   version: `1.0.0`,
   config: {
     // Roles that can use the in room commands.
-    allowedRoles : ['host']
+    allowedRoles : ['host'],
   },
   dependencies: [
     `sav/roles`,

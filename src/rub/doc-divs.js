@@ -21,4 +21,6 @@ room.onRoomLink = function onRoomLink () {
   form.innerHTML = `
   </fieldset>`;
   doc.body.appendChild(form);
+  
+  room.getDoc = getDoc;
 }

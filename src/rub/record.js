@@ -27,8 +27,14 @@ room.onCommand0_record = function ( player, arguments, argumentString ) {
   let roles = room.getPlugin(`sav/roles`);
   if ( !roles ) return;
   if ( roles.ensurePlayerRoles( player.id, allowedRoles, room ) ) {
-    if ( config.record ) config.record = false;
-    else config.record = true;
+    if ( config.record ) {
+			config.record = false;
+			room.sendAnnouncement(`Recording has stopped!`, null, 0xFF0000);
+    }
+    else {
+			config.record = true;
+			room.sendAnnouncement(`Recording has started!`, null, 0x00FF00);
+		}
   }
 }
 

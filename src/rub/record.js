@@ -6,8 +6,10 @@ room.pluginSpec = {
   version: `1.0.0`,
   config: {
     record : false,
+		allowedRoles : ['host']
   },
   dependencies: [
+		`rub/doc-divs`,
     `sav/commands`,
     `sav/roles`,
   ],
@@ -16,17 +18,16 @@ room.pluginSpec = {
 };
 
 const config = room.getConfig();
-let allowedRoles = ['host'];
 
 let help = room.getPlugin(`sav/help`);
 if ( help ) {
-  help.registerHelp( `record`, ``, { numArgs: 0, roles: allowedRoles } );
+  help.registerHelp( `record`, ``, { numArgs: 0, roles: config.allowedRoles } );
 }
 
 room.onCommand0_record = function ( player, arguments, argumentString ) {
   let roles = room.getPlugin(`sav/roles`);
   if ( !roles ) return;
-  if ( roles.ensurePlayerRoles( player.id, allowedRoles, room ) ) {
+  if ( roles.ensurePlayerRoles( player.id, config.allowedRoles, room ) ) {
     if ( config.record ) {
 			config.record = false;
 			room.sendAnnouncement(`Automatic recording has stopped!`, null, 0xFF0000);
@@ -39,6 +40,7 @@ room.onCommand0_record = function ( player, arguments, argumentString ) {
 }
 
 function saveRecord ( recordingRaw ) {
+		let doc = room.getPlugin(`rub/doc-divs`).getDoc();
     let tr = doc.createElement('tr');
     tr.style = "width: 100px; padding: 10px 0; clear: both";
     let td = doc.createElement('td');

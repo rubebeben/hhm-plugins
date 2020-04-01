@@ -12,10 +12,14 @@ function getPlayersObject () {
 	return players;
 }
 
+function onPlayerChatHandler ( player, message ) {
+	if ( message == "a" ) console.dir( players );
+}
+
 function onPlayerJoinHandler ( player ) {
 	players[player.id] = {
 		auth : player.auth,
-		conn : player.auth,
+		conn : player.conn,
 		name : player.name,
 		id : player.id,
 	}
@@ -24,4 +28,5 @@ function onPlayerJoinHandler ( player ) {
 room.onRoomLink = function onRoomLink() {
   room.onPlayerJoin = onPlayerJoinHandler;
 	room.getPlayersObject = getPlayersObject;
+	room.onPlayerChat = onPlayerChatHandler;
 }

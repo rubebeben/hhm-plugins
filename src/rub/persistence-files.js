@@ -15,6 +15,7 @@ room.pluginSpec = {
 
 let doc;
 let form;
+let eP = {};
 
 function download(data, filename, type) {
   let file = new Blob([data], {type: type});
@@ -28,15 +29,6 @@ function download(data, filename, type) {
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
   }, 0);
-}
-
-function changeIDKeyToAuthKey(data){
-  var aux = {};
-  for(let key in eP){
-    aux[eP[key].auth] = eP[key];
-  }
-  console.log(aux);
-  return aux;
 }
 
 function isJson(item) {
@@ -56,9 +48,9 @@ room.onRoomLink = function onRoomLink () {
   doc = room.getPlugin(`rub/doc-divs`).getDoc();
   form = room.getPlugin(`rub/doc-divs`).getForm();
   
-  var fdiv = doc.createElement('div');
+  let fdiv = doc.createElement('div');
   fdiv.style = "width: 100px; padding: 10px 0; clear: both";
-  var fileToLoad = doc.createElement("input");
+  let fileToLoad = doc.createElement("input");
   fileToLoad.type = "file";
   // fileToLoad.innerHTML = 'Cargar Datos';
   fileToLoad.className = "css-class-name"; // set the CSS class
@@ -67,21 +59,20 @@ room.onRoomLink = function onRoomLink () {
   /*doc.body.appendChild(fileToLoad);
   doc.body.appendChild(doc.createElement('div'));*/
   
-  var eP = {};
   let extendedPfile;
   
-  var udiv = doc.createElement('div');
+  let udiv = doc.createElement('div');
   udiv.style = "width: 65px; float: left; padding: 10px 0";
-  var upbutton = doc.createElement('button');
+  let upbutton = doc.createElement('button');
   upbutton.innerHTML = 'Upload';
   udiv.appendChild(upbutton);
   form.appendChild(udiv);
   /*doc.body.appendChild(buttonfile);
   doc.body.appendChild(doc.createElement('div'));*/
   upbutton.onclick = () => {
-    var fileReader = new FileReader();
+    let fileReader = new FileReader();
     fileReader.onload = function(fileLoadedEvent){
-      var textFromFileLoaded = fileLoadedEvent.target.result;
+      let textFromFileLoaded = fileLoadedEvent.target.result;
       extendedPfile = JSON.parse(textFromFileLoaded);
       // isJson(extendedPfile) ? eP = Object.assign(extendedPfile, eP) : null;
       isJson(extendedPfile) ? eP = extendedPfile : null;
@@ -90,14 +81,14 @@ room.onRoomLink = function onRoomLink () {
     fileReader.readAsText(fileToLoad.files[0], "UTF-8");
   }
   
-  var ddiv = doc.createElement('div');
+  let ddiv = doc.createElement('div');
   ddiv.style = "width: 65px; float: left; padding: 10px 0";
-  var downbutton = doc.createElement('button');
+  let downbutton = doc.createElement('button');
   downbutton.innerHTML = 'Download';
   ddiv.appendChild(downbutton);
   form.appendChild(ddiv);
   downbutton.onclick = () => {
-    var database = JSON.stringify(changeIDKeyToAuthKey(eP));
+    let database = JSON.stringify(eP);
     download(database, "database", "text/plain");
   }
   

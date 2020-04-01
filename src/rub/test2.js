@@ -16,7 +16,7 @@ room.pluginSpec = {
 
 function onPlayerChatHandler ( player, message ) {
 	let players = room.getPlugin( `rub/test1` ).getPlayersObject();
-	if ( message == "a" ) console.dir( players );
+	if ( message == "a" ) return;
 	else{
 		players[player.id].message = [];
 		players[player.id].message.push( message );

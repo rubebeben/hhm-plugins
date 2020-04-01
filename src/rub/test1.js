@@ -1,7 +1,7 @@
 var room = HBInit();
 
 room.pluginSpec = {
-  name: `rub/test`,
+  name: `rub/test1`,
   author: `ruben`,
   version: `1.0.0`,
 };

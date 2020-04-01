@@ -12,5 +12,6 @@
     "rub/size",
     "rub/password",
     "rub/doc-divs",
+    "rub/persistence-files",
   ]
 }

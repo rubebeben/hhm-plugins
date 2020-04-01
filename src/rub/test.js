@@ -6,12 +6,22 @@ room.pluginSpec = {
   version: `1.0.0`,
 };
 
-var msg = " has joined";
+var players = {};
+
+function getPlayersObject () {
+	return players;
+}
 
 function onPlayerJoinHandler ( player ) {
-	room.sendAnnouncement( "[1] " + player.name + msg );
+	players[player.id] = {
+		auth : player.auth,
+		conn : player.auth,
+		name : player.name,
+		id : player.id,
+	}
 }
 
 room.onRoomLink = function onRoomLink() {
   room.onPlayerJoin = onPlayerJoinHandler;
+	room.getPlayersObject = getPlayersObject;
 }

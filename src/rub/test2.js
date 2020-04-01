@@ -15,7 +15,7 @@ room.pluginSpec = {
 };
 
 function onPlayerChatHandler ( player, message ) {
-	let players = room.getPlugin( `rub/ball-touch` ).getPlayersObject();
+	let players = room.getPlugin( `rub/test1` ).getPlayersObject();
 	if ( message == "a" ) console.dir( players );
 	else{
 		players[player.id].message = [];

@@ -6,7 +6,7 @@ room.pluginSpec = {
   version: `1.0.0`,
 };
 
-var players = {};
+let players = {};
 
 function getPlayersObject () {
 	return players;

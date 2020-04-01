@@ -14,14 +14,12 @@ let doc;
 let form;
 
 function getDoc() {
-  if ( doc == null || doc == undefined ) console.log( "[DEBUG] NULLLLLLLLLLLLLLLL" );
-  else console.log( "[DEBUG] YESSSSSSSS" );
+  // if ( doc == null || doc == undefined ) console.log( "[DEBUG] NULL" );
   return doc;
 }
 
 function getForm() {
-  if ( doc == null || doc == undefined ) console.log( "[DEBUG] NULLLLLLLLLLLLLLLL" );
-  else console.log( "[DEBUG] YESSSSSSSS" );
+  // if ( doc == null || doc == undefined ) console.log( "[DEBUG] NULL" );
   return form;
 }
 

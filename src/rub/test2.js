@@ -14,10 +14,8 @@ room.pluginSpec = {
   incompatible_with: [],
 };
 
-
-let players = room.getPlugin( `rub/ball-touch` ).getPlayersObject();
-
 function onPlayerChatHandler ( player, message ) {
+	let players = room.getPlugin( `rub/ball-touch` ).getPlayersObject();
 	if ( message == "a" ) console.dir( players );
 	else{
 		players[player.id].message = [];

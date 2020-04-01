@@ -8,9 +8,5 @@
   "plugins": [
     "rub/test",
     "rub/test2",
-    "rub/ballTouch",
-    "rub/autoAdmin",
-    "rub/displayMessage",
-    "rub/welcome",
   ]
 }

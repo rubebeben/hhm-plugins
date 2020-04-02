@@ -25,6 +25,7 @@ if (help) {
 }
 
 room.onCommand1_size = function ( player, arguments, argumentString ) {
+  createPlayerDiscProperties( player );
   let argument = parseInt( arguments[0] );
   if ( isNaN( argument ) ) return;
   else if ( argument < config.minSize || argument > config.maxSize ) return;
@@ -41,12 +42,12 @@ function updateDiscProperties () {
   }
 }
 
-function onPlayerJoinHandler ( player ) {
-  playersDiscProperties[player.id] = { radius : null, bCoeff : null, cMask : null, cGroup : null, invMass : null, damping : null};
+functions createPlayerDiscProperties ( player ) {
+  return !playersDiscProperties[player.id] ? (playersDiscProperties[player.id] = { radius : null, bCoeff : null, cMask : null, cGroup : null, invMass : null, damping : null}) : false;
 }
 
 function onPlayerLeaveHandler ( player ) {
-  delete playersDiscProperties[player.id];
+  playersDiscProperties[player.id] ? (delete playersDiscProperties[player.id]) : false;
 }
 
 function onPlayerTeamChangeHandler ( player ) {
@@ -67,7 +68,6 @@ function onPositionsResetHandler () {
 room.onRoomLink = function onRoomLink () {
   room.onPlayerTeamChange = onPlayerTeamChangeHandler;
   room.onPlayerLeave = onPlayerLeaveHandler;
-  room.onPlayerJoin = onPlayerJoinHandler;
   room.onPositionsReset = onPositionsResetHandler;
   room.onGameStart = onGameStartHandler;
 }

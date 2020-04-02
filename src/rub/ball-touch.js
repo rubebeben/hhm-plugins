@@ -67,7 +67,7 @@ function onGameStopHandler () {
 }
 
 function getLastPlayersWhoTouchedTheBall () {
-	return playersThatTouchedTheBall;
+	return [...playersThatTouchedTheBall];
 }
 
 room.onRoomLink = function onRoomLink () {

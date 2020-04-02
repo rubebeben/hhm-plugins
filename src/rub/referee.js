@@ -8,7 +8,9 @@ room.pluginSpec = {
   dependencies: [
     `rub/ball-touch`,
   ],
-  order: {},
+  order: {
+    'after': [`rub/ball-touch`],
+  },
   incompatible_with: [],
 };
 

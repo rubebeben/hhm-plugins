@@ -42,7 +42,7 @@ function updateDiscProperties () {
   }
 }
 
-functions createPlayerDiscProperties ( player ) {
+function createPlayerDiscProperties ( player ) {
   return !playersDiscProperties[player.id] ? (playersDiscProperties[player.id] = { radius : null, bCoeff : null, cMask : null, cGroup : null, invMass : null, damping : null}) : false;
 }
 

@@ -90,9 +90,6 @@ function onTeamGoalHandler ( team ) {
 
   let players = room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall();
   
-  console.dir( players ); // DEBUG
-  console.dir( team );
-  
   for ( let i = 0 ; i < players.length ; i++ ) {
     players[i] = players[i] ? room.getPlayer( players[i] ) : false;
   }
@@ -101,10 +98,10 @@ function onTeamGoalHandler ( team ) {
   let scorer, assister;
 
   if ( ownGoal ) {
-    if ( !players[1] ) { ownGoal = true; scorer = players[0].id; assister = false; }
     else if ( config.ownGoal ) { ownGoal = true; scorer = players[0].id; assister = false; }
     else {
-      if ( players[1].team != team ) { ownGoal = true; scorer = players[0].id; assister = false; }
+      if ( !players[1] ) { ownGoal = true; scorer = players[0].id; assister = false; }
+      else if ( players[1].team != team ) { ownGoal = true; scorer = players[0].id; assister = false; }
       else { ownGoal = false; }
     }
   }
@@ -115,8 +112,14 @@ function onTeamGoalHandler ( team ) {
       assister = players[1] && players[1].team == team ? players[1].id : false;
     }
     else {
-      scorer = players[1].id;
-      assister = players[2] && players[2].team == team ? players[2].id : false;
+      if ( player[0].team != team ) {
+        scorer = players[1].id;
+        assister = players[2] && players[2].team == team ? players[2].id : false;
+      }
+      else {
+        scorer = players[0].id;
+        assister = players[1] && players[1].team == team ? players[1].id : false;
+      }
     }
   }
 

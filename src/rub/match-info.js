@@ -119,7 +119,7 @@ function onTeamGoalHandler ( team ) {
 
   // JSON.parse(JSON.stringify(objeto))
 
-  room.triggerEvent("onTeamScores", team, { onwGoal : onwGoal, scorer : scorer, assister : assister });
+  room.triggerEvent("onTeamScores", team, { ownGoal : ownGoal, scorer : scorer, assister : assister });
 }
 
 room.onRoomLink = () => {

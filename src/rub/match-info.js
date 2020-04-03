@@ -36,7 +36,10 @@ let count = 0; // DEBUG
 
 function isTheBallStopped () {
   if ( scored ) return true;
-  else if ( room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0] ) return true;
+  else if ( !room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0] ) {
+    console.dir(room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0]);
+    return true;
+  }
   return false;
 }
 
@@ -128,7 +131,7 @@ function onTeamGoalHandler ( team ) {
       assister = players[1] && players[1].team == team ? players[1].id : false;
     }
     else {
-      if ( players[0].team == team ) {
+      if ( players[0].team != team ) {
         scorer = players[1].id;
         assister = players[2] && players[2].team == team ? players[2].id : false;
       }
@@ -148,6 +151,6 @@ room.onRoomLink = () => {
   room.onTeamGoal = onTeamGoalHandler;
   room.onTeamVictory = onTeamVictoryHandler;
   room.onPositionsReset = onPositionsResetHandler;
-  room.onCron1GameSeconds = () =>  findFurthestPlayer() ;
-  // room.onCron1GameSeconds = () => ( isTheBallStopped() ? findFurthestPlayer() : {} );
+  // room.onCron1GameSeconds = () =>  findFurthestPlayer() ;
+  room.onCron1GameSeconds = () => ( isTheBallStopped() ? findFurthestPlayer() : {} );
 }

@@ -26,7 +26,7 @@ const Team = {
   BLUE: 2
 };
 
-let gks = {
+let match = {
   [Team.RED] : [],
   [Team.BLUE] : [],
 }
@@ -77,13 +77,13 @@ function getGoalkeeperWithMoreTimeInGoal ( team ) {
   return goalkeeper[0].id;
 }
 
-function onTeamVictoryHandler () {
+function onTeamVictoryHandler ( scores ) {
   count = 0; // DEBUG
   let goalkeepers = {
     red : getGoalkeeperWithMoreTimeInGoal(Team.RED),
     blue : getGoalkeeperWithMoreTimeInGoal(Team.BLUE),
   }
-  room.triggerEvent("onMatchEnd", {...goalkeepers});
+  room.triggerEvent("onMatchEnd", {...scores}, {...goalkeepers});
 }
 
 function onTeamGoalHandler ( team ) {
@@ -119,7 +119,7 @@ function onTeamGoalHandler ( team ) {
 
   // JSON.parse(JSON.stringify(objeto))
 
-  room.triggerEvent("onTeamScores", team, onwGoal, scorer, assister);
+  room.triggerEvent("onTeamScores", team, { onwGoal : onwGoal, scorer : scorer, assister : assister });
 }
 
 room.onRoomLink = () => {

@@ -111,11 +111,11 @@ function onTeamGoalHandler ( team ) {
   if ( !ownGoal ) {
     if ( config.ownGoal ) {
       scorer = players[0].id;
-      assister = players[1].team == team ? players[1].id : false;
+      assister = players[1] && players[1].team == team ? players[1].id : false;
     }
     else {
       scorer = players[1].id;
-      assister = players[2].team == team ? players[2].id : false;
+      assister = players[2] && players[2].team == team ? players[2].id : false;
     }
   }
 

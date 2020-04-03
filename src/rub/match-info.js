@@ -90,6 +90,8 @@ function onTeamGoalHandler ( team ) {
 
   let players = room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall();
   
+  console.dir( players ); // DEBUG
+  
   for ( let i = 0 ; i < players.length ; i++ ) {
     players[i] = players[i] ? room.getPlayer( players[i] ) : false;
   }
@@ -125,5 +127,5 @@ function onTeamGoalHandler ( team ) {
 room.onRoomLink = () => {
   room.onTeamGoal = onTeamGoalHandler;
   room.onTeamVictory = onTeamVictoryHandler;
-  room.onCron1GameSeconds = () => findFurthestPlayer();
+  room.onCron1GameSeconds = () => room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall() ? findFurthestPlayer() : {};
 }

@@ -87,9 +87,7 @@ HHM.config.plugins = {
   'sav/plugin-control': {},
   'hr/spam': {},
   'hr/kickban': {},
-  'rub/ball-touch': {},
-  'rub/referee': {},
-	'rub/size': {},
+  'rub/test': {},
 };
 
 /**
@@ -141,7 +139,7 @@ HHM.config.repositories = [
   {
     type: `github`,
     repository: `rubebeben/hhm-plugins`,
-	version: `test10`,
+	version: `master`,
   },
 ];
 

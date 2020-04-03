@@ -128,7 +128,7 @@ function onTeamGoalHandler ( team ) {
       assister = players[1] && players[1].team == team ? players[1].id : false;
     }
     else {
-      if ( player[0].team == team ) {
+      if ( players[0].team == team ) {
         scorer = players[1].id;
         assister = players[2] && players[2].team == team ? players[2].id : false;
       }

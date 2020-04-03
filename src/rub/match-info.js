@@ -102,13 +102,13 @@ function onTeamGoalHandler ( team ) {
   scored = true;
   let players = room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall();
   
-  console.dir( players ) // DEBUG
+  console.dir( players[0] ) // DEBUG
   
   for ( let i = 0 ; i < players.length ; i++ ) {
     players[i] = players[i] ? room.getPlayer( players[i] ) : false;
   }
   
-  console.dir( players ) // DEBUG
+  console.dir( players[0] ) // DEBUG
 
   let ownGoal = players[0].team != team ? true : false;
   let scorer, assister;

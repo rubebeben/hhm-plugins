@@ -123,7 +123,6 @@ function onTeamGoalHandler ( team ) {
 }
 
 room.onRoomLink = () => {
-  room.onGameStop = onGameStopHandler;
   room.onTeamGoal = onTeamGoalHandler;
   room.onTeamVictory = onTeamVictoryHandler;
   room.onCron1GameSeconds = () => findFurthestPlayer();

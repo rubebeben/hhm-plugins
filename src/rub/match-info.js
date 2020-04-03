@@ -127,5 +127,5 @@ function onTeamGoalHandler ( team ) {
 room.onRoomLink = () => {
   room.onTeamGoal = onTeamGoalHandler;
   room.onTeamVictory = onTeamVictoryHandler;
-  room.onCron1GameSeconds = () => room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall() ? findFurthestPlayer() : {};
+  room.onCron1GameSeconds = () => ( room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall() ? findFurthestPlayer() : {} );
 }

@@ -17,7 +17,7 @@ function onTeamScoresHandler ( team, goal ) {
     room.sendAnnouncement( `Scored by ${room.getPlayer( goal.scorer ).name} (own goal) ` );
   }
   else {
-    room.sendAnnouncement( `Scored by ${room.getPlayer( goal.scorer ).name} ${ ( goal.assister ? `assited by ${ room.getPlayer( goal.assister ).name }` : false ) } ` );
+    room.sendAnnouncement( `Scored by ${room.getPlayer( goal.scorer ).name} ${ ( goal.assister ? `assited by ${ room.getPlayer( goal.assister ).name }` : '' ) } ` );
   }
 }
 

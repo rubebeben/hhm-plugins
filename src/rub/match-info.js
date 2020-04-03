@@ -98,7 +98,7 @@ function onTeamGoalHandler ( team ) {
   let scorer, assister;
 
   if ( ownGoal ) {
-    else if ( config.ownGoal ) { ownGoal = true; scorer = players[0].id; assister = false; }
+    if ( config.ownGoal ) { ownGoal = true; scorer = players[0].id; assister = false; }
     else {
       if ( !players[1] ) { ownGoal = true; scorer = players[0].id; assister = false; }
       else if ( players[1].team != team ) { ownGoal = true; scorer = players[0].id; assister = false; }

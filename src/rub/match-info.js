@@ -31,7 +31,14 @@ let match = {
   [Team.BLUE] : [],
 }
 
+let scored = false;
 let count = 0; // DEBUG
+
+function isTheBallStopped () {
+  if ( scored ) return true;
+  else if ( room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0] ) return true;
+  return false;
+}
 
 function findFurthestPlayer () {
   
@@ -86,8 +93,13 @@ function onTeamVictoryHandler ( scores ) {
   room.triggerEvent("onMatchEnd", {...scores}, {...goalkeepers});
 }
 
-function onTeamGoalHandler ( team ) {
+function onPositionsResetHandler () {
+  scored = false;
+}
 
+function onTeamGoalHandler ( team ) {
+  
+  scored = true;
   let players = room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall();
   
   for ( let i = 0 ; i < players.length ; i++ ) {
@@ -131,5 +143,6 @@ function onTeamGoalHandler ( team ) {
 room.onRoomLink = () => {
   room.onTeamGoal = onTeamGoalHandler;
   room.onTeamVictory = onTeamVictoryHandler;
-  room.onCron1GameSeconds = () => ( room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0] ? findFurthestPlayer() : {} );
+  room.onPositionsReset = onPositionsResetHandler;
+  room.onCron1GameSeconds = () => ( isTheBallStopped() ? findFurthestPlayer() : {} );
 }

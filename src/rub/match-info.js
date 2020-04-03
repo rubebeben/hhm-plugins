@@ -148,5 +148,6 @@ room.onRoomLink = () => {
   room.onTeamGoal = onTeamGoalHandler;
   room.onTeamVictory = onTeamVictoryHandler;
   room.onPositionsReset = onPositionsResetHandler;
-  room.onCron1GameSeconds = () => ( isTheBallStopped() ? findFurthestPlayer() : {} );
+  room.onCron1GameSeconds = () =>  findFurthestPlayer() ;
+  // room.onCron1GameSeconds = () => ( isTheBallStopped() ? findFurthestPlayer() : {} );
 }

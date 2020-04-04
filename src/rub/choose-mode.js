@@ -20,20 +20,13 @@ room.pluginSpec = {
 
 const config = room.getConfig();
 const teams = room.getPlugin(`rub/team-state`).getTeamState();
-const teamID = {
-  SPECTATORS : 0,
-  RED : 1,
-  BLUE : 2,
-}
-
 let teamThatMustChoose;
-
-// room.triggerEvent("chooseMode", {...scores}, {...goalkeepers});
 
 function inChooseMode () {
   teamThatMustChoose = teams[1].length != teams[2].length ? ( teams[1].length < teams[2].length ? 1 : 2 ) : false;
-  if ( !teamThatMustChoose ) return;
+  if ( !teamThatMustChoose ) return false;
   chooseMode = true;
+  room.pauseGame( true );
   let players = ``;
   for ( let i = 0 ; i < teams[0].length ; i++ ) {
     let player = room.getPlayer( teams[0][i] );
@@ -42,6 +35,7 @@ function inChooseMode () {
   for ( let i = 0 ; i < teams[teamThatMustChoose].length ; i++ ) {
     room.sendAnnouncement( `${players}`, teams[teamThatMustChoose][i] );
   }
+  return true;
 }
 
 function onPlayerChatHandler ( player, message ) {
@@ -52,23 +46,20 @@ function onPlayerChatHandler ( player, message ) {
     if ( message > 0 && message <= teams[0].length ) {
       if ( teams[0][message] ) {
         room.setPlayerTeam( teams[0][message], teamThatMustChoose );
-        room.pauseGame( false );
         chooseMode = false;
-        inChooseMode ();
+        if ( !inChooseMode() ) room.pauseGame( false );
       }
     }
   }
 }
 
-// !room.getPlayerList().some( (e) => e.admin )
-
-function onPlayerLeaveHandler ( player ) {
-  if ( player.team != 0 ) room.triggerEvent("chooseMode", [...args]);
+function onTeamStateChangeHandler ( playerId, newTeam, previousTeam, byPlayerId ) {
+  if ( byPlayerId !== 0 || !config.enabled  ) return;
+  if ( teams[1].length != teams[2].length )
 }
 
 room.onRoomLink = () => {
-  room.onPlayerLeave = onPlayerLeaveHandler;
   room.onPlayerChat = onPlayerChatHandler;
-  room.onPlayerTeamChange = onPlayerTeamChangeHandler;
+  room.onTeamStateChange = onTeamStateChangeHandler;
 }
 

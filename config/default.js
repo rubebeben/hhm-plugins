@@ -85,6 +85,12 @@ HHM.config.plugins = {
   },
   'sav/core': {},
   'sav/plugin-control': {},
+  'sav/players': {
+    ghostKick : false;
+  },
+  'sav/chat': {
+    enableChannels: false,
+  },
   'hr/spam': {},
   'hr/kickban': {},
   'rub/test': {},

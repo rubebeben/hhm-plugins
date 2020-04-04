@@ -10,3 +10,8 @@ room.pluginSpec = {
   order: {},
   incompatible_with: [],
 };
+
+const config = room.getConfig();
+
+room.onRoomLink = () => {
+}

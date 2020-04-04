@@ -54,7 +54,7 @@ function onPlayerChatHandler ( player, message ) {
         room.setPlayerTeam( teams[0][message], teamThatMustChoose );
         room.pauseGame( false );
         chooseMode = false;
-        // teamThatMustChoose = undefined;
+        inChooseMode ();
       }
     }
   }

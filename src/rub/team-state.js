@@ -37,7 +37,7 @@ function onPlayerTeamChangeHandler ( player ) {
 }
 
 function getTeamState () {
-  return { spectators : teams[0], red : teams[1], blue : teams[2] };
+  return teams;
 }
 
 room.onRoomLink = function onRoomLink () {

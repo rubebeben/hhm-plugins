@@ -36,6 +36,10 @@ function onPlayerTeamChangeHandler ( player ) {
   teams[player.team].push( player.id );
 }
 
+function getTeamState () {
+  return { spectators : teams[0], red : teams[1], blue : teams[2] };
+}
+
 room.onRoomLink = function onRoomLink () {
   room.onPlayerTeamChange = onPlayerTeamChangeHandler;
   room.onPlayerLeave = onPlayerLeaveHandler;

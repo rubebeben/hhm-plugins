@@ -55,7 +55,15 @@ function onPlayerChatHandler ( player, message ) {
 
 function onTeamStateChangeHandler ( playerId, newTeam, previousTeam, byPlayerId ) {
   if ( byPlayerId !== 0 || !config.enabled  ) return;
-  if ( teams[1].length != teams[2].length )
+  if ( teams[1].length != teams[2].length ) inChooseMode();
+}
+
+function inChooseMode ( until = 3 ) {
+  chooseMode = true;
+  room.pauseGame( true );
+  if ( until ) {}
+  else {
+  }
 }
 
 room.onRoomLink = () => {

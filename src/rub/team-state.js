@@ -28,7 +28,7 @@ function removePlayerTeam ( playerID ) {
 
 function onPlayerJoinHandler ( player ) {
   teams[player.team].push( player.id );
-  room.triggerEvent("onTeamStateChange", player.id, player.team, false });
+  room.triggerEvent("onTeamStateChange", player.id, player.team, false, false });
 }
 
 function onPlayerLeaveHandler ( player ) {
@@ -36,10 +36,11 @@ function onPlayerLeaveHandler ( player ) {
   room.triggerEvent("onTeamStateChange", player.id, false, previousTeam });
 }
 
-function onPlayerTeamChangeHandler ( player ) {
+function onPlayerTeamChangeHandler ( player, byPlayer ) {
   let previousTeam = removePlayerTeam( player.id );
   teams[player.team].push( player.id );
-  room.triggerEvent("onTeamStateChange", player.id, player.team, previousTeam });
+  if ( !byPlayer ) byPlayer = false;
+  room.triggerEvent("onTeamStateChange", player.id, player.team, previousTeam, byPlayer });
 }
 
 function getTeamState () {

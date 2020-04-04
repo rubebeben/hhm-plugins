@@ -45,7 +45,7 @@ function isTheBallStopped () {
 
 function findFurthestPlayer () {
   
-  console.log( `[DEBUG] ${count++} seconds` ); // DEBUG
+  // console.log( `[DEBUG] ${count++} seconds` ); // DEBUG
 
   let blue = room.getPlayerList().filter((e) => e.team == Team.BLUE);
   blue.sort( function ( a, b ) {

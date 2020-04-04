@@ -31,7 +31,7 @@ let teamThatMustChoose;
 // room.triggerEvent("chooseMode", {...scores}, {...goalkeepers});
 
 function inChooseMode () {
-  chooseMode = true; = teams[1].length != teams[2].length ? ( teams[1].length < teams[2].length ? 1 : 2 ) : false;
+  teamThatMustChoose = teams[1].length != teams[2].length ? ( teams[1].length < teams[2].length ? 1 : 2 ) : false;
   if ( !teamThatMustChoose ) return;
   chooseMode = true;
   let players = ``;

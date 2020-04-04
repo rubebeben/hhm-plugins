@@ -1,4 +1,6 @@
 
+// room.onTeamStateChange = ( playerId, newTeam, previousTeam ) => {}
+
 var room = HBInit();
 
 room.pluginSpec = {
@@ -13,27 +15,31 @@ room.pluginSpec = {
 
 let teams = [ [], [], [], ];
 
-function removePlayerTeam ( player ) {
+function removePlayerTeam ( playerID ) {
   for ( let i = 0 ; i < 3 ; i++ ) {
-    let index = teams[i].indexOf( player.id );
+    let index = teams[i].indexOf( playerID );
     if ( index != -1 ) {
       teams[i].splice( index, 1 );
-      break;
+      return i;
     }
   }
+  return false;
 }
 
 function onPlayerJoinHandler ( player ) {
   teams[player.team].push( player.id );
+  room.triggerEvent("onTeamStateChange", player.id, player.team, false });
 }
 
 function onPlayerLeaveHandler ( player ) {
-  removePlayerTeam( player );
+  let previousTeam = removePlayerTeam( player.id );
+  room.triggerEvent("onTeamStateChange", player.id, false, previousTeam });
 }
 
 function onPlayerTeamChangeHandler ( player ) {
-  removePlayerTeam( player );
+  let previousTeam = removePlayerTeam( player.id );
   teams[player.team].push( player.id );
+  room.triggerEvent("onTeamStateChange", player.id, player.team, previousTeam });
 }
 
 function getTeamState () {

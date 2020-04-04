@@ -2,7 +2,7 @@
 var room = HBInit();
 
 room.pluginSpec = {
-  name: `rub/votes`,
+  name: `rub/slow-mode`,
   author: `ruben`,
   version: `1.0.0`,
   config: {},

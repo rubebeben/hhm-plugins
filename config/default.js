@@ -99,7 +99,7 @@ HHM.config.plugins = {
 /**
  * List of plugin repositories.
  *
- * When resolving plugin dependencies, the plugin manager will try to find a
+ *  When resolving plugin dependencies, the plugin manager will try to find a
  * JS file with the name of the plugin under each of these URLs. It will load
  * the first one it finds. Must include trailing slash if you want to directly
  * load JS files (as opposed to use a PHP script to serve the plugins, for
@@ -158,7 +158,7 @@ HHM.config.logLevel = `info`;
 
 // Do not edit anything after this
 
-// Load HHM if it has not already been loaded
+//  Load HHM if it has not already been loaded
 if (HHM.manager === undefined) {
   let s = document.createElement(`script`);
   s.src = `https://hhm.surge.sh/releases/hhm-${HHM.config.version}.js`;

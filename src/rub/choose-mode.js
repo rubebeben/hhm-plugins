@@ -54,7 +54,7 @@ function onPlayerChatHandler ( player, message ) {
 }
 
 function onTeamStateChangeHandler ( playerId, newTeam, previousTeam, byPlayerId ) {
-  if ( byPlayerId !== 0 || !config.enabled  ) return;
+  if ( byPlayerId !== false || !config.enabled  ) return;
   if ( teams[1].length != teams[2].length ) inChooseMode();
 }
 

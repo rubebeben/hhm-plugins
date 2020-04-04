@@ -33,7 +33,7 @@ function onPlayerJoinHandler ( player ) {
 
 function onPlayerLeaveHandler ( player ) {
   let previousTeam = removePlayerTeam( player.id );
-  room.triggerEvent("onTeamStateChange", player.id, false, previousTeam });
+  room.triggerEvent("onTeamStateChange", player.id, false, previousTeam, false });
 }
 
 function onPlayerTeamChangeHandler ( player, byPlayer ) {

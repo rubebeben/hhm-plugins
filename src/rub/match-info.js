@@ -32,7 +32,7 @@ let match = {
 }
 
 let scored = false;
-let count = 0; // DEBUG
+// let count = 0; // DEBUG
 
 function isTheBallStopped () {
   if ( scored ) return true;
@@ -88,7 +88,7 @@ function getGoalkeeperWithMoreTimeInGoal ( team ) {
 }
 
 function onTeamVictoryHandler ( scores ) {
-  count = 0; // DEBUG
+  // count = 0; // DEBUG
   let goalkeepers = {
     red : getGoalkeeperWithMoreTimeInGoal(Team.RED),
     blue : getGoalkeeperWithMoreTimeInGoal(Team.BLUE),

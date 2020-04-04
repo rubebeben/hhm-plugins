@@ -37,7 +37,7 @@ let count = 0; // DEBUG
 function isTheBallStopped () {
   if ( scored ) return true;
   else if ( !room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0] ) {
-    console.dir(room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0]);
+    // console.dir(room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall()[0]); // DEBUG
     return true;
   }
   return false;
@@ -105,13 +105,13 @@ function onTeamGoalHandler ( team ) {
   scored = true;
   let players = room.getPlugin( `rub/ball-touch` ).getLastPlayersWhoTouchedTheBall();
   
-  console.dir( players[0] ) // DEBUG
+  // console.dir( players[0] ) // DEBUG
   
   for ( let i = 0 ; i < players.length ; i++ ) {
     players[i] = players[i] ? room.getPlayer( players[i] ) : false;
   }
   
-  console.dir( players[0] ) // DEBUG
+  // console.dir( players[0] ) // DEBUG
 
   let ownGoal = players[0].team != team ? true : false;
   let scorer, assister;

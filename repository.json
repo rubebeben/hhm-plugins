@@ -1,5 +1,5 @@
 {
-  "name": "rubebeben/hhm-plugins-rub",
+  "name": "rubebeben/hhm-plugins",
   "description": "ruben's HHM plugins.",
   "author": "ruben",
   "config": {
@@ -12,6 +12,7 @@
     "rub/size",
     "rub/password",
     "rub/doc-divs",
+    "rub/record",
     "rub/persistence-files",
     "rub/match-info",
     "rub/test",
